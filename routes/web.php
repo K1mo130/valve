@@ -17,6 +17,9 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'index'])->name('index');
 
+//die wijst alle route toe naar controller met lijne code
+Route::resource('posts', PostController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
