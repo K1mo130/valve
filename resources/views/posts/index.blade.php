@@ -11,7 +11,7 @@
                         <br>
                         <h2>{{ $post->title }}</h2><br>
                         <p>{{ $post->message }}</p><br>
-                        <small>Gepost door {{ $post->user_id }} op {{ $post->created_at }}</small>
+                        <small>Gepost door {{ $post->user->name }} op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         <hr>
                     @endforeach
                 </div>
