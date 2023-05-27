@@ -10,7 +10,9 @@
                     @foreach ($posts as $post)
                         <br>
                         <h2>{{ $post->title }}</h2><br>
-                        <p>{{ $post->message }}</p>
+                        <p>{{ $post->message }}</p><br>
+                        <small>Gepost door {{ $post->user_id }} op {{ $post->created_at }}</small>
+                        <hr>
                     @endforeach
                 </div>
             </div>
