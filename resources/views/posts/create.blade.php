@@ -12,7 +12,7 @@
 
                         <div>
                             <label for="title">title:</label><br>
-                            <input type="text" value="{{ old('title') }}"><br>
+                            <input name="title" type="text" value="{{ old('title') }}"><br>
 
                             @error('title')
                                 <strong>{{ $message }}</strong>
