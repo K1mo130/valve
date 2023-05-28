@@ -18,8 +18,16 @@ class PostController extends Controller
 
     public function store(Request $request) {
         $validated = $request->validate([
-            'title'     => 'required|min:3',
-            'content'   => 'required|min:20',
-        ]);
+        'title'     => 'required|min:3',
+        'content'   => 'required|min:20',
+    ]);
+
+    $post = new Post;
+    $post->title = $validated->title;
+    $post->content = $validated->content;
+    $post->user_id = Auth::user()->id;
+    $post->save();
+    
+    return redirect()->route('index')->with('status', 'post added');
     }
 }
