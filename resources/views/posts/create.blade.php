@@ -21,7 +21,7 @@
 
                         <div>
                             <label for="content">Content</label><br>
-                            <textarea name="content" cols="30" rows="10" required>{{ old('message') }}</textarea><br>
+                            <textarea name="content" cols="30" rows="10" required>{{ old('content') }}</textarea><br>
 
                             @error('content')
                                 <strong>{{ $message }}</strong>
