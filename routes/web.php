@@ -15,7 +15,11 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('index');
+Route::get('/', function() {
+    return view('welcome');
+});
+
+Route::get('/post', [PostController::class, 'index'])->name('index');
 
 //die wijst alle route toe naar controller met lijne code
 Route::resource('posts', PostController::class);
