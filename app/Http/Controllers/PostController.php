@@ -11,4 +11,8 @@ class PostController extends Controller
         $posts = Post::all();
         return view('posts.index', compact('posts'));
     }
+
+    public function create() {
+        return view('posts.create');
+    }
 }
