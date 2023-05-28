@@ -24,7 +24,7 @@ class PostController extends Controller
 
     $post = new Post;
     $post->title = $validated['title'];
-    $post->content = $validated['content'];
+    $post->message = $validated['content'];
     $post->user_id = Auth::user()->id;
     $post->save();
     
