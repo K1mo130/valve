@@ -15,4 +15,11 @@ class PostController extends Controller
     public function create() {
         return view('posts.create');
     }
+
+    public function storen(Request $request) {
+        $validated = $request->validate([
+            'title'     => 'required|min:3',
+            'content'   => 'required|min:20',
+        ]);
+    }
 }
