@@ -12,7 +12,7 @@
 
                         <div>
                             <label for="title">title:</label><br>
-                            <input type="text" value="{{ old('title') }}" required><br>
+                            <input type="text" value="{{ old('title') }}"><br>
 
                             @error('title')
                                 <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
 
                         <div>
                             <label for="content">Content</label><br>
-                            <textarea name="content" cols="30" rows="10" required>{{ old('content') }}</textarea><br>
+                            <textarea name="content" cols="30" rows="10">{{ old('content') }}</textarea><br>
 
                             @error('content')
                                 <strong>{{ $message }}</strong>
