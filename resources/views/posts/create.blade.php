@@ -10,13 +10,25 @@
                     <form action="{{ route('posts.store') }}">
                         @csrf
 
-                        <label for="title">title:</label><br>
-                        <input type="text" value="{{ old('title') }}"><br>
+                        <div>
+                            <label for="title">title:</label><br>
+                            <input type="text" value="{{ old('title') }}" required><br>
 
-                        <label for="message">Content</label><br>
-                        <textarea name="message" cols="30" rows="10">{{ old('message') }}</textarea><br>
+                            @error('title')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                        </div>
 
-                        <input type="button" value="submit">
+                        <div>
+                            <label for="content">Content</label><br>
+                            <textarea name="content" cols="30" rows="10" required>{{ old('message') }}</textarea><br>
+
+                            @error('content')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                        </div>
+
+                        <button type="submit">add Post</button>
                     </form>
                     
                 </div>
