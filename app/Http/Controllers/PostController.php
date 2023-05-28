@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Auth;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+    public function __construct() {
+        $this->middleware('auth', ['execpt' => ['index']]);
+    }
+
     public function index() {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
         return view('posts.index', compact('posts'));
     }
 
