@@ -12,10 +12,14 @@
                         <h2>{{ $post->title }}</h2><br>
                         <p>{{ $post->message }}</p><br>
                         <small>Gepost door {{ $post->user->name }} op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
-                        @if ($post->user_id == Auth::user()->id)
-                            <a href="{{ route('posts.edit', $post->id) }}">Edit post</a>
-                        @endif
-                        <br>
+                        @auth
+                            @if ($post->user_id == Auth::user()->id)
+                            <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
+                            @else
+                            <a href="">Like post</a><br>
+                            @endif
+                            
+                        @endauth
                         Post heeft {{ $post->likes()->count() }} likes
                         <hr>
                     @endforeach
