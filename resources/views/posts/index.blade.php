@@ -9,8 +9,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @foreach ($posts as $post)
                         <br>
-                        <h2>{{ $post->title }}</h2><br>
-                        <p>{{ $post->message }}</p><br>
+                        <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2><br>
                         <small>Gepost door <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         @auth
                             @if ($post->user_id == Auth::user()->id)
