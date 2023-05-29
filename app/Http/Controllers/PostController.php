@@ -22,9 +22,9 @@ class PostController extends Controller {
 
     public function store(Request $request) {
         $validated = $request->validate([
-        'title'     => 'required|min:3',
-        'content'   => 'required|min:20',
-    ]);
+            'title'     => 'required|min:3',
+            'content'   => 'required|min:20',
+        ]);
 
     $post = new Post;
     $post->title = $validated['title'];
@@ -33,5 +33,35 @@ class PostController extends Controller {
     $post->save();
     
     return redirect()->route('index')->with('status', 'post added');
+    }
+
+    public function edit($id) {
+        $post = Post::findOrFail($id);
+
+        if($post->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update($id, Request $request) {
+        $post = Post::findOrFail($id);
+
+        if($post->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'title'     => 'required|min:3',
+            'content'   => 'required|min:20',
+        ]);
+
+        $post->title = $validated['title'];
+        $post->message = $validated['content'];
+        $post->title = $validated['title'];
+        $post->save();
+
+        return redirect()->route('index')->with('status', 'post edited');
     }
 }
