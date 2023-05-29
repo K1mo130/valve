@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Like;
 use Auth;
 
 class PostController extends Controller {
     // de gebruiker die uitgelogd is zal niet naar post pagina bezoeken behalve de 'index' pagina
     public function __construct() {
-        $this->middleware('auth', ['execpt' => ['index']]);
+        $this->middleware('auth', ['execpt' => ['index', 'show']]);
     }
 
     public function index() {
@@ -69,5 +70,17 @@ class PostController extends Controller {
         $post->save();
 
         return redirect()->route('index')->with('status', 'post edited');
+    }
+
+    public function destroy($id) {
+        if(!Auth::user()->is_admin){
+            abort(403, 'Enkel Admins kunnen posts verwijderen');
+        }
+        $post = Post::findOrFail($id);
+        // delete the likes with the post
+        $likes = Like::where('post_id', '=', $post->id)->delete();
+        $post->delete();
+
+        return redirect()->route('index')->with('status', 'deleted sucsseded');
     }
 }
