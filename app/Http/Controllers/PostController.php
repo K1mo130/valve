@@ -7,6 +7,7 @@ use App\Models\Post;
 use Auth;
 
 class PostController extends Controller {
+    // de gebruiker die uitgelogd is zal niet naar post pagina bezoeken behalve de 'index' pagina
     public function __construct() {
         $this->middleware('auth', ['execpt' => ['index']]);
     }
