@@ -16,7 +16,7 @@
                             @if ($post->user_id == Auth::user()->id)
                             <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
                             @else
-                            <a href="">Like post</a><br>
+                            <a href="{{ route('like', $post->id) }}">Like post</a><br>
                             @endif
                             
                         @endauth
