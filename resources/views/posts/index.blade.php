@@ -15,6 +15,8 @@
                         @if ($post->user_id == Auth::user()->id)
                             <a href="{{ route('posts.edit', $post->id) }}">Edit post</a>
                         @endif
+                        <br>
+                        Post heeft {{ $post->likes()->count() }} likes
                         <hr>
                     @endforeach
                 </div>
