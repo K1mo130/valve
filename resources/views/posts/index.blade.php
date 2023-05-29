@@ -11,7 +11,7 @@
                         <br>
                         <h2>{{ $post->title }}</h2><br>
                         <p>{{ $post->message }}</p><br>
-                        <small>Gepost door {{ $post->user->name }} op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
+                        <small>Gepost door <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         @auth
                             @if ($post->user_id == Auth::user()->id)
                             <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
