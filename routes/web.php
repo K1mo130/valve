@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/post', [PostController::class, 'index'])->name('index');
 
 //die wijst alle route toe naar controller met lijne code
 Route::resource('posts', PostController::class);
+
+Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
