@@ -13,7 +13,7 @@
                         <p>{{ $post->message }}</p><br>
                         <small>Gepost door {{ $post->user->name }} op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         @if ($post->user_id == Auth::user()->id)
-                            Edit link
+                            <a href="{{ route('posts.edit', $post->id) }}">Edit post</a>
                         @endif
                         <hr>
                     @endforeach
