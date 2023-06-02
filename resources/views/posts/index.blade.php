@@ -22,6 +22,12 @@
                         Post heeft {{ $post->likes()->count() }} likes
                         <hr>
                     @endforeach
+
+                    @auth
+                        <div class="mt-4">
+                            <a href="{{ route('posts.create') }}" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded border border-black">Create Post</a>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </div>
