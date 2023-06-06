@@ -8,9 +8,9 @@ use App\Models\Like;
 use Auth;
 
 class PostController extends Controller {
-    // de gebruiker die uitgelogd is zal niet naar post pagina bezoeken behalve de 'index' pagina
+    // The user who is logged out will not be able to visit the post pages except the 'index' page
     public function __construct() {
-        $this->middleware('auth', ['execpt' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index() {
@@ -29,23 +29,32 @@ class PostController extends Controller {
 
     public function store(Request $request) {
         $validated = $request->validate([
-            'title'     => 'required|min:3',
-            'content'   => 'required|min:20',
+            'title'       => 'required|min:3',
+            'content'     => 'required|min:20',
+            'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-    $post = new Post;
-    $post->title = $validated['title'];
-    $post->message = $validated['content'];
-    $post->user_id = Auth::user()->id;
-    $post->save();
-    
-    return redirect()->route('index')->with('status', 'post added');
+        $post = new Post;
+        $post->title = $validated['title'];
+        $post->message = $validated['content'];
+        $post->user_id = Auth::user()->id;
+
+        if ($request->hasFile('cover_image')) {
+            $image = $request->file('cover_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $post->cover_image = $imageName;
+        }
+
+        $post->save();
+
+        return redirect()->route('index')->with('status', 'Post added successfully.');
     }
 
     public function edit($id) {
         $post = Post::findOrFail($id);
 
-        if($post->user_id != Auth::user()->id) {
+        if ($post->user_id != Auth::user()->id) {
             abort(403);
         }
 
@@ -55,32 +64,50 @@ class PostController extends Controller {
     public function update($id, Request $request) {
         $post = Post::findOrFail($id);
 
-        if($post->user_id != Auth::user()->id) {
+        if ($post->user_id != Auth::user()->id) {
             abort(403);
         }
 
         $validated = $request->validate([
-            'title'     => 'required|min:3',
-            'content'   => 'required|min:20',
+            'title'   => 'required|min:3',
+            'content' => 'required|min:20',
         ]);
 
         $post->title = $validated['title'];
         $post->message = $validated['content'];
-        $post->title = $validated['title'];
+
+        if ($request->hasFile('cover_image')) {
+            $image = $request->file('cover_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $post->cover_image = $imageName;
+        }
+
         $post->save();
 
-        return redirect()->route('index')->with('status', 'post edited');
+        return redirect()->route('index')->with('status', 'Post edited successfully.');
     }
 
     public function destroy($id) {
-        if(!Auth::user()->is_admin){
-            abort(403, 'Enkel Admins kunnen posts verwijderen');
+        if (!Auth::user()->is_admin) {
+            abort(403, 'Only admins can delete posts.');
         }
+
         $post = Post::findOrFail($id);
-        // delete the likes with the post
+
+        // Delete the likes associated with the post
         $likes = Like::where('post_id', '=', $post->id)->delete();
+
+        // Delete the cover image file if it exists
+        if ($post->cover_image) {
+            $imagePath = public_path('images/' . $post->cover_image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
         $post->delete();
 
-        return redirect()->route('index')->with('status', 'deleted sucsseded');
+        return redirect()->route('index')->with('status', 'Post deleted successfully.');
     }
 }
