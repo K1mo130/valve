@@ -45,4 +45,8 @@ Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact-
 
 Route::post('/contact-us/send-message', [ContactController::class, 'sendEmail'])->name('contact.send');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 require __DIR__.'/auth.php';
