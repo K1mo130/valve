@@ -15,14 +15,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home page') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('News') }}
+                    </x-nav-link>
                     @auth
-                        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                            {{ __('Posts') }}
-                        </x-nav-link>
                         <x-nav-link :href="route('contact-us')" :active="request()->routeIs('contact-us')">
                             {{ __('Contact') }}
                         </x-nav-link>
                     @endauth
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                        {{ __('About') }}
+                    </x-nav-link>
                 </div>
             </div>
 
