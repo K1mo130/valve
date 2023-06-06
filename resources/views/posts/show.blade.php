@@ -9,7 +9,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
                     
-                        <small>Gepost door <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
+                        <small>Posted by <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         <br>
                         <br>
                         {{ $post->message }}
