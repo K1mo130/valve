@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Contact ons</h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Contact us</h2>
     </x-slot>
 
     <div class="py-12">
@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="mt-4">
-                            <label for="name">Naam</label>
+                            <label for="name">Name</label>
                             <input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
                         </div>
 
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="message">Bericht</label>
+                            <label for="message">Message</label>
                             <textarea id="message" class="block mt-1 w-full" name="message" required></textarea>
                         </div>
 
