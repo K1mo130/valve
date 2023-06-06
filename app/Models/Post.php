@@ -16,4 +16,7 @@ class Post extends Model
     public function likes() {
         return $this->hasMany('App\Models\Like');
     }
+
+    //om de mass assignment te beschouwen
+    protected $fillable = ['title', 'content', 'cover_image'];
 }
