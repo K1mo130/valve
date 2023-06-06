@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Alle posten</h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Last news</h2>
     </x-slot>
 
     <div class="py-12">
@@ -10,23 +10,32 @@
                     @foreach ($posts as $post)
                         <br>
                         <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2><br>
-                        <small>Gepost door <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
+                        
+                        <small>Posted by <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> at {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
+                        
+                        <p>{{ $post->message }}</p>
+                        
+                        <img src="/images/{{ $post->cover_image }}" style="width: 50%">
+
                         @auth
-                            @if ($post->user_id == Auth::user()->id)
-                            <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
+                        @if (Auth::user()->is_admin)
+                        <a href="{{ route('like', $post->id) }}">Like post</a><br>
+                        <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
                             @else
                             <a href="{{ route('like', $post->id) }}">Like post</a><br>
                             @endif
                             
                         @endauth
-                        Post heeft {{ $post->likes()->count() }} likes
+                        Post has {{ $post->likes()->count() }} likes
                         <hr>
                     @endforeach
 
                     @auth
-                        <div class="mt-4">
-                            <a href="{{ route('posts.create') }}" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded border border-black">Create Post</a>
-                        </div>
+                        @if (Auth::user()->is_admin)
+                            <div class="mt-4">
+                                <a href="{{ route('posts.create') }}" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded border border-black">Create Post</a>
+                            </div>
+                        @endif
                     @endauth
                 </div>
             </div>
