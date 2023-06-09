@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="container_body">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @guest
@@ -18,6 +18,22 @@
                 </div>
                 @endguest
             </div>
+
+            <div class="flex justify-center">
+                <div class="w-1/2 mx-2 my-4">
+                    @foreach ($games as $game)
+                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
+                            <h3>{{ $game['name'] }}</h3>
+                            <img src="{{ $game['imageBackground'] }}" alt="{{ $game['name'] }}" style="width: 200px;">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            
+            
+        
+        
+
         </div>
     </div>
 </x-app-layout>
