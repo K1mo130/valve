@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Last news</h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="container_body">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -13,19 +13,19 @@
                         
                         <small>Posted by <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> at {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
                         
-                        <p>{{ $post->message }}</p>
+                        <p>{{ $post->content }}</p>
                         
                         <img src="/images/{{ $post->cover_image }}" style="width: 50%">
 
                         @auth
-                        @if (Auth::user()->is_admin)
-                        <a href="{{ route('like', $post->id) }}">Like post</a><br>
-                        <a href="{{ route('posts.edit', $post->id) }}">Edit post</a><br>
+                            @if (Auth::user()->is_admin)
+                                <a href="{{ route('like', $post->id) }}" class="text-green-500 hover:text-green-700">Like post</a><br>
+                                <a href="{{ route('posts.edit', $post->id) }}" class="text-yellow-500 hover:text-yellow-700">Edit post</a><br>
                             @else
-                            <a href="{{ route('like', $post->id) }}">Like post</a><br>
+                                <a href="{{ route('like', $post->id) }}" class="text-green-500 hover:text-green-700">Like post</a><br>
                             @endif
-                            
                         @endauth
+
                         Post has {{ $post->likes()->count() }} likes
                         <hr>
                     @endforeach
@@ -42,3 +42,7 @@
         </div>
     </div>
 </x-app-layout>
+
+<!-- Include your CSS and JavaScript files -->
+<link href="/css/style.css" rel="stylesheet" />
+<script src="/js/script.js"></script>
