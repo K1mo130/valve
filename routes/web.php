@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,6 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function() {
-    return view('dashboard');
-});
 
 
 
@@ -48,5 +46,8 @@ Route::post('/contact-us/send-message', [ContactController::class, 'sendEmail'])
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 require __DIR__.'/auth.php';
