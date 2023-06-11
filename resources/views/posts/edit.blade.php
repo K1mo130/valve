@@ -7,7 +7,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('posts.update', $post->id) }}">
+                    <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -19,6 +19,17 @@
                                 <strong>{{ $message }}</strong>
                             @enderror
                         </div>
+
+                        <div>
+                            <label for="cover_image">Cover Image:</label><br>
+                            <input type="file" name="cover_image" id="cover_image"><br>
+                            @if ($post->cover_image)
+                                <img src="{{ asset('storage/' . $post->cover_image) }}" alt="Cover Image" style="max-width: 200px;"><br>
+                            @endif
+                            @error('cover_image')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                        </div><br>
 
                         <div>
                             <label for="content">Content</label><br>
