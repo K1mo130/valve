@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
@@ -22,9 +22,7 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,7 +45,6 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/', [ProductController::class, 'index'])->name('products.index');
+// Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
 require __DIR__.'/auth.php';
