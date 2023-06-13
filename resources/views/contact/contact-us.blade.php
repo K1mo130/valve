@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Contact us</h2>
+        <h2 class="h2_title">Contact us</h2>
     </x-slot>
 
     <div class="container_body">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="container_main">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="border_text">
                     <div>
                         @if (Session::has('message_send'))
                             <div class="alert alert-success" role="alert" style="background-color: green; border: 1px solid darkgreen; color: white; text-aline: center;">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded border border-black">
+                            <button type="submit" class="button">
                                 {{ __('Send') }}
                             </button>
                         </div>

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ $post->title }}</h2>
+        <h2 class="h2_title">{{ $post->title }}</h2>
     </x-slot>
 
     <div class="container_body">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+        <div class="container_main">
+            <div class="border">
+                <div class="border_text">
                     
                     
                         <small>Posted by <a href="{{ route('profile.edit', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/y \o\m H:i') }}</small>
@@ -31,7 +31,7 @@
                                 <form method="post" href="{{ route('posts.destroy', $post->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="DELETE POST" style="background-color: red;" onclick="return confirm('Ben je zeker dat je dit post wilt verwijderen?');">
+                                    <input type="submit" value="DELETE POST" style="background-color: red; padding: 0.5rem;" onclick="return confirm('Are you sure that you want to delete this post?');">
                                 </form>
                             @endif
                         @endauth
