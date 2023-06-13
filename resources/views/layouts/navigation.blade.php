@@ -22,6 +22,10 @@
                         <x-nav-link :href="route('contact-us')" :active="request()->routeIs('contact-us')">
                             {{ __('Contact') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('library.index')" :active="request()->routeIs('library.index')">
+                            {{ __('Library') }}
+                        </x-nav-link>                        
                     @endauth
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('About') }}
@@ -111,12 +115,11 @@
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
-                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-dropdown-link>
-
-                        <button id="logout-form" type="submit" style="display: none;"></button>
                     </form>
                 </div>
             @else
