@@ -1,35 +1,40 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="h2_title">
             {{ __('Valve') }}
         </h2>
     </x-slot>
 
     <div class="container_body">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="container_main">
+            <div class="border">
                 @guest
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="border_text">
                     {{ __("You have to log in or register") }}
                 </div>
                 @else
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="border_text">
                     {{ __("Welcome, ") . Auth::user()->name }}
                 </div>
                 @endguest
             </div>
 
-            <div class="flex justify-center">
-                <div class="w-1/2 mx-2 my-4">
-                    @foreach ($games as $game)
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
-                            <h3>{{ $game['name'] }}</h3>
-                            <img src="{{ $game['imageBackground'] }}" alt="{{ $game['name'] }}" style="width: 200px;">
-                        </div>
-                    @endforeach
-                </div>
+            <div class="border_product">
+                @foreach ($games as $game)
+                    <div class="border" style="padding: 1rem">
+                        <h3>{{ $game['name'] }}</h3>
+                        <img src="{{ $game['imageBackground'] }}" alt="{{ $game['name'] }}" style="width: 200px;">
+
+                        @auth
+                            <form action="{{ route('library.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $game['id'] }}">
+                                <button type="submit" class="btn btn-primary">Add to Library</button>
+                            </form>
+                        @endauth
+                    </div>
+                @endforeach
             </div>
-            
         </div>
     </div>
 </x-app-layout>
