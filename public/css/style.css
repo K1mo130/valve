@@ -1,6 +1,11 @@
-/* body{
-    background-color: #ffb133;
-} */
+.custom-background {
+    background-color: #ffc765 !important;
+    min-height: 100vh; 
+}
+
+.bg-custom-color {
+    background-color: #ffdca1;
+}
 
 .container_body {
     padding: 3rem; 
@@ -9,13 +14,23 @@
 .container_main {
     margin: 0 auto;
     max-width: 80rem; 
+    margin-top: 1.5rem; 
+
+}
+
+.h2_title {
+    color: #1F2937; 
+    font-size: 1.25rem;
+    font-weight: 600; 
+    line-height: 1.25; 
 }
 
 .border {
     overflow: hidden; 
-    background-color: #ffffff;  
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
-    padding: 2rem 3rem;
+    background-color: #ffdca1;  
+    box-shadow: 0 1px 2px 0 #0000000d; 
+    margin: 0.5rem 0rem;
+    /* padding: 2rem 3rem; */
 }
 
 .border_text {
@@ -27,7 +42,48 @@
     display: flex; 
     margin: 0.5rem 1rem;
     flex-direction: column;
-    align-items: center;
+}
+
+.like {
+    color: #ff3737; 
+}
+
+.like:hover {
+    color: #b00e0e; 
+}
+
+.edit_link {
+    color: #78acff; 
+}
+
+.edit_link:hover {
+    color: #397eed; 
+}
+
+.btn {
+    /* Add your button styling here */
+}
+  
+.btn-primary {
+    /* Add your primary button styling here */
+}
+
+.button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    background-color: #6060600d; 
+    color: #00000083; 
+    font-weight: 700; 
+    border-radius: 0.25rem; 
+    border-width: 1px; 
+    border-color: #4b4b4b5f; 
+}
+
+.button:hover {
+    background-color: #00000060; 
+    color: #fffffffc; 
 }
 
 @media (min-width: 640px) { 
