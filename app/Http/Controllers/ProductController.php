@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Product;
 
 
 class ProductController extends Controller
@@ -46,8 +47,13 @@ class ProductController extends Controller
                 'added' => $added,
                 'imageBackground' => $imageBackground,
             ];
-        }
 
+            // Create a new Product instance and save it in the database
+            $product = Product::updateOrCreate(
+                ['slug' => $slug],
+                ['id' => $id, 'name' => $name, 'added' => $added, 'image' => $imageBackground]
+            );
+        }
 
         return view('dashboard', ['games' => $gameDetails]);
     }

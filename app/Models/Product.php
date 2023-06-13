@@ -9,13 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function category()
-    {
+    public function category() {
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function reviews()
-    {
+    public function reviews() {
         return $this->hasMany('App\Models\Reviews');
     }
+
+    public function libraries() {
+        return $this->hasMany('App\Models\Library');
+    }
+
+    protected $fillable = ['id', 'slug', 'name', 'added', 'image'];
 }
