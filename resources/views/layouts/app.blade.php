@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="font-sans antialiased custom-background">
     <div class="bg-yellow-400 min-h-screen">
@@ -35,3 +35,7 @@
     </div>
 </body>
 </html>
+
+<!-- Include your CSS and JavaScript files -->
+<link href="/css/style.css" rel="stylesheet" />
+<script src="/js/script.js"></script>

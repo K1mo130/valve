@@ -1,11 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">
-            {{ __('Valve') }}
-        </h2>
+    <x-slot name="title">
+        Home page
     </x-slot>
 
     <div class="container_body">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <div class="container_main">
             <div class="border">
                 @guest
@@ -21,15 +31,16 @@
 
             <div class="border_product">
                 @foreach ($games as $game)
-                    <div class="border" style="padding: 1rem">
-                        <h3>{{ $game['name'] }}</h3>
-                        <img src="{{ $game['imageBackground'] }}" alt="{{ $game['name'] }}" style="width: 200px;">
-
+                    <div class="border" style=" padding: 1rem;">
+                        <h3 style="font-size: 30px">{{ $game['name'] }}</h3>
+                        <br>
+                        <img src="{{ $game['imageBackground'] }}" alt="{{ $game['name'] }}" style="width: 300px;">
+                        <br>
                         @auth
                             <form action="{{ route('library.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $game['id'] }}">
-                                <button type="submit" class="btn btn-primary">Add to Library</button>
+                                <button class="button" type="submit" class="btn btn-primary">Add to Library</button>
                             </form>
                         @endauth
                     </div>

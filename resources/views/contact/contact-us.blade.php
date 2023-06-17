@@ -1,11 +1,11 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">Contact us</h2>
+    <x-slot name="title">
+        Contact us
     </x-slot>
 
     <div class="container_body">
         <div class="container_main">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="border">
                 <div class="border_text">
                     <div>
                         @if (Session::has('message_send'))
@@ -43,3 +43,4 @@
         </div>
     </div>
 </x-app-layout>
+

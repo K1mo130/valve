@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">{{ $post->title }}</h2>
+    <x-slot name="title">
+       {{ $post->title }}
     </x-slot>
 
     <div class="container_body">

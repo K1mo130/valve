@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">Edit post</h2>
+    <x-slot name="title">
+        Edit post
     </x-slot>
 
     <div class="container_body">

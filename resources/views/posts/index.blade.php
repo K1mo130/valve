@@ -1,12 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">Last news</h2>
+    <x-slot name="title">
+        Last news
     </x-slot>
 
     <div class="container_body">
         <div class="container_main">
             <div class="border">
                 <div class="border_text">
+                    <h1 style="font-size: 35px">News</h1>
                     @foreach ($posts as $post)
                         <br>
                         <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2><br>
@@ -33,7 +34,7 @@
                     @auth
                         @if (Auth::user()->is_admin)
                             <div class="mt-4">
-                                <a href="{{ route('posts.create') }}" class="button">Create Post</a>
+                                <a href="{{ route('posts.create') }}" class="button">Create News</a>
                             </div>
                         @endif
                     @endauth
@@ -42,7 +43,3 @@
         </div>
     </div>
 </x-app-layout>
-
-<!-- Include your CSS and JavaScript files -->
-<link href="/css/style.css" rel="stylesheet" />
-<script src="/js/script.js"></script>
