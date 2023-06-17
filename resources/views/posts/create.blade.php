@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h2_title">Niewe post</h2>
+    <x-slot name="title">
+        New post
     </x-slot>
 
     <div class="container_body">
