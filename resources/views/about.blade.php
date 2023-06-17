@@ -24,7 +24,10 @@
                         <li>
                             Resource 3 - <a href="https://youtu.be/9_Of7xOTetQ" target="_blank">Creating the contact page</a>
                         </li>
-                        <!-- Add more resources here -->
+                        <br>
+                        <li>
+                            Resource 4 - <a href="https://github.com/K1mo130/valve_Karim_ALTIR.git" target="_blank">Github link for this project</a>
+                        </li>
                     </ul>
                 </div>
             </div>
