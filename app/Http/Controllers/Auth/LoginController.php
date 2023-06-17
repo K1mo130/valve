@@ -27,6 +27,15 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return $this->loggedOut($request) ?: redirect('/');
+        return redirect('/');
+    }
+
+    /**
+     * Get the post logout redirect path.
+     *
+     * @return string
+     */
+    protected function redirectPath() {
+        return '/';
     }
 }
