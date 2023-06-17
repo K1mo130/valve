@@ -1,10 +1,6 @@
 .custom-background {
-    background-color: #ffc765 !important;
+    background-color: #ffd58d !important;
     min-height: 100vh; 
-}
-
-.bg-custom-color {
-    background-color: #ffdca1;
 }
 
 .container_body {
@@ -15,8 +11,12 @@
     margin: 0 auto;
     max-width: 80rem; 
     margin-top: 1.5rem; 
-
 }
+
+.custom-bg-class {
+    background-color: #fff0d7;
+}
+  
 
 .h2_title {
     color: #1F2937; 
@@ -27,15 +27,20 @@
 
 .border {
     overflow: hidden; 
-    background-color: #ffdca1;  
+    background-color: #fff7ea;  
     box-shadow: 0 1px 2px 0 #0000000d; 
     margin: 0.5rem 0rem;
     /* padding: 2rem 3rem; */
+    color: #000;
 }
 
 .border_text {
     padding: 1.5rem; 
     color: #111827; 
+}
+
+.border_text a:hover {
+    color: #af6f00; 
 }
 
 .border_product {
@@ -60,12 +65,48 @@
     color: #397eed; 
 }
 
-.btn {
-    /* Add your button styling here */
+.faq-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.faq-item {
+    background-color: #ffd58d;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.answer {
+    margin-top: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
   
-.btn-primary {
-    /* Add your primary button styling here */
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #ffaf2695;
+}
+
+.category_title {
+    font-size: 24px;
+}
+
+.category_actions {
+    margin-top: -24px;
+    margin-left: 224px;
+    margin-bottom: 20px;
 }
 
 .button {
@@ -73,17 +114,32 @@
     padding-bottom: 0.5rem; 
     padding-left: 1rem;
     padding-right: 1rem; 
-    background-color: #6060600d; 
+    background-color: #60606012; 
     color: #00000083; 
     font-weight: 700; 
     border-radius: 0.25rem; 
     border-width: 1px; 
-    border-color: #4b4b4b5f; 
+    border-color: #8787875f; 
 }
 
 .button:hover {
-    background-color: #00000060; 
+    background-color: #90909060; 
     color: #fffffffc; 
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.bg-blue-500 {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 @media (min-width: 640px) { 
