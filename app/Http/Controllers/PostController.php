@@ -54,8 +54,8 @@ class PostController extends Controller {
     public function edit($id) {
         $post = Post::findOrFail($id);
 
-        if ($post->user_id != Auth::user()->id) {
-            abort(403);
+        if (!Auth::user()->is_admin) {
+            abort(403, 'Only admins can edit news.');
         }
 
         return view('posts.edit', compact('post'));
@@ -64,8 +64,8 @@ class PostController extends Controller {
     public function update($id, Request $request) {
         $post = Post::findOrFail($id);
 
-        if ($post->user_id != Auth::user()->id) {
-            abort(403);
+        if (!Auth::user()->is_admin) {
+            abort(403, 'Only admins can update news.');
         }
 
         $validated = $request->validate([
@@ -90,7 +90,7 @@ class PostController extends Controller {
 
     public function destroy($id) {
         if (!Auth::user()->is_admin) {
-            abort(403, 'Only admins can delete posts.');
+            abort(403, 'Only admins can delete news.');
         }
 
         $post = Post::findOrFail($id);
