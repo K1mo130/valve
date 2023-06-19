@@ -40,7 +40,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="button">Edit Post</button>
+                        <button type="submit" class="button">Edit News</button>
                     </form>
                     
                 </div>

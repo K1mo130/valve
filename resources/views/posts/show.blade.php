@@ -31,7 +31,7 @@
                                 <form method="post" href="{{ route('posts.destroy', $post->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="DELETE POST" style="background-color: red; padding: 0.5rem;" onclick="return confirm('Are you sure that you want to delete this post?');">
+                                    <input type="submit" value="DELETE NEWS" style="background-color: red; padding: 0.5rem;" onclick="return confirm('Are you sure that you want to delete this news?');">
                                 </form>
                             @endif
                         @endauth
