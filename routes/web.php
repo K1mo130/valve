@@ -9,6 +9,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\PasswordController;
+
 
 
 
@@ -32,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update/birthday', [ProfileController::class, 'updateBirthday'])->name('update.birthday');
     Route::put('/update/avatar', [ProfileController::class, 'updateAvatar'])->name('update.avatar');
     Route::post('/update/about', [ProfileController::class, 'updateAbout'])->name('update.about');
+    Route::put('/update/password', [PasswordController::class, 'update'])->name('password.update');
 });
 
 Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
